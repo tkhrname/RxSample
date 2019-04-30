@@ -35,6 +35,7 @@ class SampleViewModel {
         return helloWorldSubject.asObserver()
     }
     
+    // 「Subject」イベントの検知に加えて、イベントの発生もできるクラス
     private let helloWorldSubject = PublishSubject<String>()
     
     func updateItem() {
