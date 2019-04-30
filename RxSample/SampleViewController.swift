@@ -5,6 +5,9 @@ class SampleViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     private var viewModel: SampleViewModel!
+    
+    @IBOutlet weak var nameTextField: UITextView!
+    @IBOutlet weak var nameLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,19 @@ class SampleViewController: UIViewController {
         self.viewModel.updateItem()
     }
     
+    private func initializedBind() {
+        // bindを利用
+        self.nameTextField.rx.text
+            .bind(to: self.nameLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        
+        // subscribeを利用
+        self.nameTextField.rx.text.subscribe(onNext: { text in
+            //
+            self.nameLabel.text = text
+        }).disposed(by: self.disposeBag)
+    }
+    
 }
 
 class SampleViewModel {
@@ -30,6 +46,7 @@ class SampleViewModel {
     /*
      Observable: 「観測可能」なものを表現し、イベントを検知するためのクラス
      ストリームとも表現される
+     イベントの発生元を作成
      */
     var helloWorldObservable: Observable<String> {
         return helloWorldSubject.asObserver()
