@@ -1,5 +1,6 @@
 import UIKit
 import RxSwift
+import RxCocoa
 
 class SampleViewController: UIViewController {
     
@@ -12,7 +13,6 @@ class SampleViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.viewModel = SampleViewModel()
         
         self.viewModel.helloWorldObservable
@@ -97,6 +97,10 @@ class SampleViewModel {
      */
     var helloWorldObservable: Observable<String> {
         return helloWorldSubject.asObserver()
+    }
+    
+    var helloWorldDriver: Driver<String> {
+        return helloWorldSubject.asDriver(onErrorJustReturn: "Error")
     }
     
     // 「Subject」イベントの検知に加えて、イベントの発生もできるクラス
