@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController" customModule="RxSample" customModuleProvider="target">
             <connections>
+                <outlet property="countLabel" destination="zqL-8i-T2v" id="pbO-KO-iDe"/>
                 <outlet property="view" destination="iN0-l3-epB" id="c6f-Jy-IHO"/>
             </connections>
         </placeholder>
@@ -19,7 +20,63 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqL-8i-T2v">
+                    <rect key="frame" x="80" y="180" width="215" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="44e-RH-P3C"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPU-vF-god">
+                    <rect key="frame" x="80" y="281" width="215" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="bWW-39-2bj"/>
+                    </constraints>
+                    <state key="normal" title="カウントアップ"/>
+                    <connections>
+                        <action selector="countUp:" destination="-1" eventType="touchUpInside" id="acB-tK-FK8"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNT-0p-R7W">
+                    <rect key="frame" x="80" y="351" width="215" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="lR1-BQ-jHA"/>
+                    </constraints>
+                    <state key="normal" title="カウントダウン"/>
+                    <connections>
+                        <action selector="countDown:" destination="-1" eventType="touchUpInside" id="uUR-JO-tbU"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q36-Ol-xN1">
+                    <rect key="frame" x="80" y="421" width="215" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="qRZ-oq-mqT"/>
+                    </constraints>
+                    <state key="normal" title="リセット"/>
+                    <connections>
+                        <action selector="countReset:" destination="-1" eventType="touchUpInside" id="nlI-Ur-2sQ"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="yPU-vF-god" firstAttribute="centerX" secondItem="zqL-8i-T2v" secondAttribute="centerX" id="3QG-qf-TDF"/>
+                <constraint firstItem="q36-Ol-xN1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="80" id="7Qf-BO-WAQ"/>
+                <constraint firstItem="yPU-vF-god" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="80" id="8EN-5j-vIy"/>
+                <constraint firstItem="zqL-8i-T2v" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="160" id="9Dm-0p-SvA"/>
+                <constraint firstItem="q36-Ol-xN1" firstAttribute="top" secondItem="aNT-0p-R7W" secondAttribute="bottom" constant="40" id="BfQ-yS-Ou7"/>
+                <constraint firstItem="yPU-vF-god" firstAttribute="top" secondItem="zqL-8i-T2v" secondAttribute="bottom" constant="80" id="FJY-jj-1zT"/>
+                <constraint firstItem="zqL-8i-T2v" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="80" id="G0I-CN-hGy"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yPU-vF-god" secondAttribute="trailing" constant="80" id="JsK-Or-Hq7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zqL-8i-T2v" secondAttribute="trailing" constant="80" id="hkE-44-EbA"/>
+                <constraint firstItem="aNT-0p-R7W" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="80" id="iEW-cH-eK9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="q36-Ol-xN1" secondAttribute="trailing" constant="80" id="oIl-ko-gbI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aNT-0p-R7W" secondAttribute="trailing" constant="80" id="rXD-sC-B0R"/>
+                <constraint firstItem="aNT-0p-R7W" firstAttribute="top" secondItem="yPU-vF-god" secondAttribute="bottom" constant="40" id="zgW-tT-X3W"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
     </objects>
