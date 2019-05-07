@@ -12,7 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController" customModule="RxSample" customModuleProvider="target">
             <connections>
-                <outlet property="countLabel" destination="zqL-8i-T2v" id="pbO-KO-iDe"/>
                 <outlet property="view" destination="iN0-l3-epB" id="c6f-Jy-IHO"/>
             </connections>
         </placeholder>
@@ -36,9 +35,6 @@
                         <constraint firstAttribute="height" constant="30" id="bWW-39-2bj"/>
                     </constraints>
                     <state key="normal" title="カウントアップ"/>
-                    <connections>
-                        <action selector="countUp:" destination="-1" eventType="touchUpInside" id="acB-tK-FK8"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNT-0p-R7W">
                     <rect key="frame" x="80" y="351" width="215" height="30"/>
@@ -46,9 +42,6 @@
                         <constraint firstAttribute="height" constant="30" id="lR1-BQ-jHA"/>
                     </constraints>
                     <state key="normal" title="カウントダウン"/>
-                    <connections>
-                        <action selector="countDown:" destination="-1" eventType="touchUpInside" id="uUR-JO-tbU"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q36-Ol-xN1">
                     <rect key="frame" x="80" y="421" width="215" height="30"/>
@@ -56,9 +49,6 @@
                         <constraint firstAttribute="height" constant="30" id="qRZ-oq-mqT"/>
                     </constraints>
                     <state key="normal" title="リセット"/>
-                    <connections>
-                        <action selector="countReset:" destination="-1" eventType="touchUpInside" id="nlI-Ur-2sQ"/>
-                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

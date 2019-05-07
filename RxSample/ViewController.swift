@@ -9,41 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var countLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-    
-    @IBAction func countUp(_ sender: Any) {
-    }
-    
-    @IBAction func countDown(_ sender: Any) {
-    }
-    
-    @IBAction func countReset(_ sender: Any) {
-    }
-    
 }
 
-class CounterViewModel {
-    private(set) var count = 0
-    
-    func incrementCount(callBack: (Int) -> ()) {
-        count += 1
-        callBack(count)
-    }
-    
-    func decrementCount(callBack: (Int) -> ()) {
-        count -= 1
-        callBack(count)
-    }
-    
-    func resetCount(callBack: (Int) -> ()) {
-        count -= 1
-        callBack(count)
-    }
-    
-}
+
+
+
