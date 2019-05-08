@@ -20,7 +20,7 @@ enum MModelError: Error {
     case invalidPassword
     case invalidIdAndPassword
     
-    fileprivate var errorText: String {
+    var errorText: String {
         switch self {
         case .invalidIdAndPassword:
             return ""
@@ -57,6 +57,9 @@ final class MModel: MModelProtocol {
 
 /*
  View
+ 1. ユーザー入力をViewModelに伝搬する
+ 2. 自身の状態とViewModelの状態をデータバインディングする
+ 3. ViewModelから返されるイベントを元に描画処理を実行する
  */
 final class MvvmViewController: UIViewController {
     
@@ -69,26 +72,26 @@ final class MvvmViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // ユーザー入力を監視
+        // 1. ユーザー入力を監視
         idTextField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         pwTextField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-        // ViewModelからの通知をここで監視する
+        // 2. ViewModelからの通知をここで監視する
         notificationCenter.addObserver(self, selector: #selector(updateValidationText), name: viewModel.changeText, object: nil)
         notificationCenter.addObserver(self, selector: #selector(updateValidationColor), name: viewModel.changeColor, object: nil)
     }
     
     @objc func textFieldEditingChanged(sender: UITextField) {
-        // ユーザー入力をViewModelに伝える
+        // 1. ユーザー入力をViewModelに伝える
         viewModel.idPwChanged(id: idTextField.text, pw: pwTextField.text)
     }
     
-    // Viewが画面を更新できるようにする
+    // 3. Viewが画面を更新できるようにする
     @objc func updateValidationText(notification: Notification) {
         // 送られてくる型情報が失われている
         guard let text = notification.object as? String else { return }
         validationLabel.text = text
     }
-    // Viewが画面を更新できるようにする
+    // 3. Viewが画面を更新できるようにする
     @objc func updateValidationColor(notification: Notification) {
         guard let color = notification.object as? UIColor else { return }
         validationLabel.textColor = color
