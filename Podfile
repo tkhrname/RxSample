@@ -6,6 +6,7 @@ target 'RxSample' do
   use_frameworks!
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'Alamofire'
 
   # Pods for RxSample
 
