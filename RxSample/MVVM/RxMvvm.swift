@@ -50,8 +50,11 @@ final class RxViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var pwTextField: UITextField!
     @IBOutlet private weak var validationLabel: UILabel!
     
-    // 1. 入力フィールドのObaservableをViewModelに渡す
-    private lazy var viewModel = RxViewModel(idTextObservable: idTextField.rx.text.asObservable(), pwTextObservable: pwTextField.rx.text.asObservable(), model: RxModel())
+    private lazy var viewModel = RxViewModel(
+        idTextObservable: idTextField.rx.text.asObservable(), // 1. 入力フィールドのObaservableをViewModelに渡す
+        pwTextObservable: pwTextField.rx.text.asObservable(), // 1. 入力フィールドのObaservableをViewModelに渡す
+        model: RxModel()
+    )
     
     private let disposeBag = DisposeBag()
     
@@ -82,9 +85,10 @@ final class RxViewModel {
     let validationText: Observable<String>
     let loadLabelColor: Observable<UIColor>
     
+    // Modelに直接依存するのではなくProtocolに依存するようにしてDIできるようにすることで疎結合になりテスタブルになる
     init(idTextObservable: Observable<String?>, pwTextObservable: Observable<String?>, model: RxModelProtocol) {
         // 2. textFieldの文字列の入力・変更イベントに同期してModelのValidateを呼び出すように関連付けている
-        let event = Observable
+        let event = Observable // 2つのイベントストリームを組み合わせる
             // IDとPWそれぞれで変更があった時、共通の処理を呼び出すためにcombineLatestを使う
             .combineLatest(idTextObservable, pwTextObservable) // 複数のObservableの最新値を組み合わせる
             .skip(1) // 指定時間の間はイベントを無視する

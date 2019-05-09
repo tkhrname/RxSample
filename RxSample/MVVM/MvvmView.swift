@@ -100,6 +100,9 @@ final class MvvmViewController: UIViewController {
 
 /*
  ViewModel
+ 1. Viewに表示するためのデータを保持する
+ 2. Viewからイベントを受け取り、Modelの処理を呼び出す
+ 3. Viewからイベントを受け取り、加工して値を更新する
  */
 final class MvvmViewModel {
     
@@ -114,16 +117,18 @@ final class MvvmViewModel {
         self.model = model
     }
     
-    // Viewからイベントを受け取り、Modelの処理を呼び出す
     // Notificationを使うことで実際のViewがなくてもViewModelとそのロジックが独立して存在できる
     // -> ViewModelがテストしやすい状態にある
     func idPwChanged(id: String?, pw: String?) {
+        // 2. Viewからイベントを受け取り、Modelの処理を呼び出す
         let result = model.validate(idText: id, passwordText: pw)
         switch result {
         case .success:
+            // 3. 加工して値を更新する
             notificationCenter.post(name: changeText, object: "OK")
             notificationCenter.post(name: changeColor, object: UIColor.green)
         case .failure(let error as MModelError):
+            // 3. 加工して値を更新する
             notificationCenter.post(name: changeText, object: error.errorText)
             notificationCenter.post(name: changeColor, object: UIColor.red)
         case _:

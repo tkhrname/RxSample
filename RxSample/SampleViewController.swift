@@ -16,6 +16,7 @@ class SampleViewController: UIViewController {
         self.viewModel = SampleViewModel()
         
         self.viewModel.helloWorldObservable
+            // イベントを受け取っての処理
             .subscribe(
                 // デフォルトのイベントを流す。イベント内に値を格納でき、何度でも呼び出せる。
                 onNext: { [weak self] value in
@@ -29,9 +30,10 @@ class SampleViewController: UIViewController {
     
     private func initializedBind() {
         // bindを利用
-        self.nameTextField.rx.text
-            .bind(to: self.nameLabel.rx.text)
-            .disposed(by: self.disposeBag)
+//        self.nameTextField.rx.text
+//            .bind(to: self.nameLabel.rx.text)
+//            .disposed(by: self.disposeBag)
+        self.viewModel.nameTextObservable.bind(to: self.nameTextField.rx.text).disposed(by: self.disposeBag)
         
         // subscribeを利用
         self.nameTextField.rx.text.subscribe(onNext: { text in
@@ -90,6 +92,7 @@ class SampleViewController: UIViewController {
 
 class SampleViewModel {
     
+    let nameTextObservable: Observable<String> = Observable.just("test")
     /*
      Observable: 「観測可能」なものを表現し、イベントを検知するためのクラス
      ストリームとも表現される
@@ -105,7 +108,7 @@ class SampleViewModel {
     
     // 「Subject」イベントの検知に加えて、イベントの発生もできるクラス
     private let helloWorldSubject = PublishSubject<String>()
-    
+    // イベント発火
     func updateItem() {
         helloWorldSubject.onNext("Hello World!")
         helloWorldSubject.onNext("Hello World!!")

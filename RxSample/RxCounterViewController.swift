@@ -30,10 +30,15 @@ protocol CounterViewModelType {
     func setup(input: CounterViewModelInput)
 }
 
-//
+/*
+ ViewModel
+ 1. Viewに表示するためのデータを保持する
+ 2. Viewからイベントを受け取り、Modelの処理を呼び出す
+ 3. Viewからイベントを受け取り、加工して値を更新する
+ */
 class CounterRxViewModel: CounterViewModelType {
     var outputs: CounterViewModelOutput?
-    
+    // 1. Viewに表示するためのデータを保持する
     private let countRelay = BehaviorRelay<Int>(value: 0)
     private let initialCount = 0
     private let disposeBag = DisposeBag()
@@ -44,19 +49,19 @@ class CounterRxViewModel: CounterViewModelType {
     }
     
     func setup(input: CounterViewModelInput) {
-        input.countUpButton
+        input.countUpButton // 3. Viewからイベントを受け取り、加工して値を更新する
             .subscribe(onNext: { [weak self] in
                 self?.incrementCount()
             })
             .disposed(by: disposeBag)
         
-        input.countDownButton
+        input.countDownButton // 3. Viewからイベントを受け取り、加工して値を更新する
             .subscribe(onNext: { [weak self] in
                 self?.decrementCount()
             })
             .disposed(by: disposeBag)
         
-        input.countResetButton
+        input.countResetButton // 3. Viewからイベントを受け取り、加工して値を更新する
             .subscribe(onNext: { [weak self] in
                 self?.resetCount()
             })
@@ -86,6 +91,12 @@ extension CounterRxViewModel: CounterViewModelOutput {
     }
 }
 
+/*
+ View
+ 1. ユーザー入力をViewModelに伝搬する
+ 2. 自身の状態とViewModelの状態をデータバインディングする
+ 3. ViewModelから返されるイベントを元に描画処理を実行する
+ */
 class RxCounterViewController: UIViewController {
     
     @IBOutlet weak var countLabel: UILabel!
@@ -105,16 +116,21 @@ class RxCounterViewController: UIViewController {
     private func setupViewModel() {
         viewModel = CounterRxViewModel()
         let input = CounterViewModelInput(
-            countUpButton: countUpButton.rx.tap.asObservable(),
-            countDownButton: countDownButton.rx.tap.asObservable(),
-            countResetButton: countResetButton.rx.tap.asObservable()
+            countUpButton: countUpButton.rx.tap.asObservable(), // 1. ユーザー入力をViewModelに伝搬する
+            countDownButton: countDownButton.rx.tap.asObservable(), // 1. ユーザー入力をViewModelに伝搬する
+            countResetButton: countResetButton.rx.tap.asObservable() // 1. ユーザー入力をViewModelに伝搬する
         )
         
         viewModel.setup(input: input)
-        
+        // 2. 自身の状態とViewModelの状態をデータバインディングする
         viewModel.outputs?.conterText
-//            .drive(onNext: {value in})
-            .drive(countLabel.rx.text)
+            .drive(
+                // 3. ViewModelから返されるイベントを元に描画処理を実行する
+                countLabel.rx.text
+            )
+//            .drive(onNext: { value in
+//                self.countLabel.text = value
+//            })
             .disposed(by: disposeBag)
     }
     
