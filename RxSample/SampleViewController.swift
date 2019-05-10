@@ -2,6 +2,35 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+class SampleViewModel {
+    
+    // 「Subject」イベントの検知に加えて、イベントの発生もできるクラス
+    private let helloWorldSubject = PublishSubject<String>()
+    
+    /*
+     Observable: 「観測可能」なものを表現し、イベントを検知するためのクラス
+     ストリームとも表現される
+     イベントの発生元を作成
+     */
+    var helloWorldObservable: Observable<String> {
+        return helloWorldSubject.asObserver()
+    }
+    
+    let nameTextObservable: Observable<String> = Observable.just("test")
+    
+    var helloWorldDriver: Driver<String> {
+        return helloWorldSubject.asDriver(onErrorJustReturn: "Error")
+    }
+    // イベント発火
+    func updateItem() {
+        helloWorldSubject.onNext("Hello World!")
+        helloWorldSubject.onNext("Hello World!!")
+        helloWorldSubject.onNext("Hello World!!!")
+        helloWorldSubject.onCompleted()
+    }
+    
+}
+
 class SampleViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
@@ -90,30 +119,4 @@ class SampleViewController: UIViewController {
     
 }
 
-class SampleViewModel {
-    
-    let nameTextObservable: Observable<String> = Observable.just("test")
-    /*
-     Observable: 「観測可能」なものを表現し、イベントを検知するためのクラス
-     ストリームとも表現される
-     イベントの発生元を作成
-     */
-    var helloWorldObservable: Observable<String> {
-        return helloWorldSubject.asObserver()
-    }
-    
-    var helloWorldDriver: Driver<String> {
-        return helloWorldSubject.asDriver(onErrorJustReturn: "Error")
-    }
-    
-    // 「Subject」イベントの検知に加えて、イベントの発生もできるクラス
-    private let helloWorldSubject = PublishSubject<String>()
-    // イベント発火
-    func updateItem() {
-        helloWorldSubject.onNext("Hello World!")
-        helloWorldSubject.onNext("Hello World!!")
-        helloWorldSubject.onNext("Hello World!!!")
-        helloWorldSubject.onCompleted()
-    }
-    
-}
+
