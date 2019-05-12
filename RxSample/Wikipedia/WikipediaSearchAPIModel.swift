@@ -14,9 +14,9 @@ class WikipediaSearchAPIModel {
     let client = WikipediaAPIClient()
     
     // wikipedia検索実体 Wikipedia APIでの検索結果をObservableで扱えるようにするためのメソッド
-    func searchWikipedia(_ parameters:[String:String]) -> Observable<[Result]> {
+    func searchWikipedia(_ parameters:[String:String]) -> Observable<[ResultWiki]> {
         // [Result]型のObservableオブジェクトを生成
-        return Observable<[Result]>.create { (observer) -> Disposable in
+        return Observable<[ResultWiki]>.create { (observer) -> Disposable in
             // Wikipedia APIへHTTPリクエストを送信
             let request = self.client.getRequest(parameters).responseJSON{ response in    // -------（1）
                 // 結果にエラーがあればonErrorに渡して処理を終える
@@ -35,9 +35,9 @@ class WikipediaSearchAPIModel {
     }
     
     // JSON解析メソッド  ＊前回のサンプルと同様
-    private func parseJson(_ json: Any) -> [Result] {
+    private func parseJson(_ json: Any) -> [ResultWiki] {
         guard let items = json as? [String: Any] else { return [] }
-        var results = [Result]()
+        var results = [ResultWiki]()
         // JSONの階層を追って検索結果を配列で返す
         if let queryItems = items["query"] as? [String:Any] {
             if let searchItems  = queryItems["search"] as? [[String: Any]] {
@@ -46,7 +46,7 @@ class WikipediaSearchAPIModel {
                         let pageid = $0["pageid"] as? Int else {
                             return
                     }
-                    results.append(Result(title: title, pageid: pageid))
+                    results.append(ResultWiki(title: title, pageid: pageid))
                 }
             }
         }

@@ -31,6 +31,9 @@
 		6D95D4A42282966000BBCABA /* RxMvvm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D95D4A32282966000BBCABA /* RxMvvm.swift */; };
 		6D95D4A722841DA400BBCABA /* MVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D95D4A622841DA400BBCABA /* MVCModel.swift */; };
 		6D95D4A922841F7400BBCABA /* MVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D95D4A822841F7400BBCABA /* MVCViewController.swift */; };
+		6D95D4AE22866C7200BBCABA /* SearchUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D95D4AD22866C7200BBCABA /* SearchUserModel.swift */; };
+		6D95D4B122866DFF00BBCABA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D95D4B022866DFF00BBCABA /* User.swift */; };
+		6D95D4B322866F7400BBCABA /* SearchUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D95D4B222866F7400BBCABA /* SearchUserViewModel.swift */; };
 		AA0C656A37C6C7B59DCA718B /* Pods_RxSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08B2ED63CC792BD2E7B80A3 /* Pods_RxSample.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +85,9 @@
 		6D95D4A32282966000BBCABA /* RxMvvm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxMvvm.swift; sourceTree = "<group>"; };
 		6D95D4A622841DA400BBCABA /* MVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCModel.swift; sourceTree = "<group>"; };
 		6D95D4A822841F7400BBCABA /* MVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCViewController.swift; sourceTree = "<group>"; };
+		6D95D4AD22866C7200BBCABA /* SearchUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserModel.swift; sourceTree = "<group>"; };
+		6D95D4B022866DFF00BBCABA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6D95D4B222866F7400BBCABA /* SearchUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserViewModel.swift; sourceTree = "<group>"; };
 		978927B528FFD307983335FB /* Pods-RxSampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSampleTests.debug.xcconfig"; path = "Target Support Files/Pods-RxSampleTests/Pods-RxSampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9FD41C703F3B78F272422DE6 /* Pods-RxSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSample.release.xcconfig"; path = "Target Support Files/Pods-RxSample/Pods-RxSample.release.xcconfig"; sourceTree = "<group>"; };
 		A43FA3BA6B277B3D7FA17404 /* Pods_RxSampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +202,9 @@
 		6D95D4A02282794700BBCABA /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				6D95D4AA22866BFD00BBCABA /* Model */,
+				6D95D4AB22866C0600BBCABA /* View */,
+				6D95D4AC22866C0E00BBCABA /* ViewModel */,
 				6D95D4A12282797900BBCABA /* MvvmView.swift */,
 				6D95D4A32282966000BBCABA /* RxMvvm.swift */,
 			);
@@ -209,6 +218,38 @@
 				6D95D4A822841F7400BBCABA /* MVCViewController.swift */,
 			);
 			path = Compare;
+			sourceTree = "<group>";
+		};
+		6D95D4AA22866BFD00BBCABA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6D95D4AF22866DF100BBCABA /* Entity */,
+				6D95D4AD22866C7200BBCABA /* SearchUserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6D95D4AB22866C0600BBCABA /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6D95D4AC22866C0E00BBCABA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6D95D4B222866F7400BBCABA /* SearchUserViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6D95D4AF22866DF100BBCABA /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				6D95D4B022866DFF00BBCABA /* User.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		6F6DEB0179B483ECA8EEACEF /* Pods */ = {
@@ -505,8 +546,11 @@
 				6D95D49D2281903300BBCABA /* WikipediaSearchAPIModel.swift in Sources */,
 				6D95D48A227686A100BBCABA /* NormalViewController.swift in Sources */,
 				6D95D48C227699C000BBCABA /* SampleViewController.swift in Sources */,
+				6D95D4AE22866C7200BBCABA /* SearchUserModel.swift in Sources */,
+				6D95D4B122866DFF00BBCABA /* User.swift in Sources */,
 				6D95D4A42282966000BBCABA /* RxMvvm.swift in Sources */,
 				6D95D45C22767EC400BBCABA /* AppDelegate.swift in Sources */,
+				6D95D4B322866F7400BBCABA /* SearchUserViewModel.swift in Sources */,
 				6D95D49B22818DF100BBCABA /* WikipediaAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

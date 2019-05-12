@@ -12,7 +12,7 @@ import RxSwift
 class WikipediaSearchAPIViewModel {
     
     var searchWord = Variable<String>("")
-    var items = Variable<[Result]>([])
+    var items = Variable<[ResultWiki]>([])
     private let model = WikipediaSearchAPIModel()
     private var disposeBag = DisposeBag()
     // 略

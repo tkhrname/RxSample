@@ -9,7 +9,7 @@
 import Foundation
 
 // 検索結果を格納する構造体
-struct Result {
+struct ResultWiki {
     let title: String
     let pageid: Int
 }   
