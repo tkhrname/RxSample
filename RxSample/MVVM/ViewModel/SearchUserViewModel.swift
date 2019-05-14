@@ -17,6 +17,12 @@ protocol SearchUserViewModelType {
     func setup(input: SearchUserViewModelInput)
 }
 
+/*
+ ViewModel
+ 1. Viewに表示するためのデータを保持する
+ 2. Viewからイベントを受け取り、Modelの処理を呼び出す
+ 3. Viewからイベントを受け取り、加工して値を更新する
+ */
 class SearchUserViewModel: SearchUserViewModelType {
     
     var output: SearchUserViewModelOutput?

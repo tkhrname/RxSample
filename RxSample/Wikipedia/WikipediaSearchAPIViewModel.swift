@@ -9,6 +9,14 @@
 import Foundation
 import RxSwift
 
+protocol ViewModelInputs {
+    var searchWord: Variable<String?> { get }
+}
+
+protocol ViewModelOutputs {
+    var items: Observable<[ResultWiki]> { get }
+}
+
 class WikipediaSearchAPIViewModel {
     
     var searchWord = Variable<String>("")
