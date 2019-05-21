@@ -48,7 +48,7 @@ class SampleViewController: UIViewController {
             // イベントを受け取っての処理
             .subscribe(
                 // デフォルトのイベントを流す。イベント内に値を格納でき、何度でも呼び出せる。
-                onNext: { [weak self] value in
+                onNext: { value in
                   print("value = \(value)")
             })
             // disposeBagを引数として渡すと

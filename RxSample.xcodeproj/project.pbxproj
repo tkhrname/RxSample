@@ -35,6 +35,7 @@
 		6D95D4B122866DFF00BBCABA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D95D4B022866DFF00BBCABA /* User.swift */; };
 		6D95D4B322866F7400BBCABA /* SearchUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D95D4B222866F7400BBCABA /* SearchUserViewModel.swift */; };
 		6D95D4B522892C1B00BBCABA /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D95D4B422892C1B00BBCABA /* SearchUserViewController.swift */; };
+		6D95D4B82293CDC100BBCABA /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D95D4B72293CDC100BBCABA /* SearchEventViewController.swift */; };
 		AA0C656A37C6C7B59DCA718B /* Pods_RxSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08B2ED63CC792BD2E7B80A3 /* Pods_RxSample.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		6D95D4B022866DFF00BBCABA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6D95D4B222866F7400BBCABA /* SearchUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserViewModel.swift; sourceTree = "<group>"; };
 		6D95D4B422892C1B00BBCABA /* SearchUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserViewController.swift; sourceTree = "<group>"; };
+		6D95D4B72293CDC100BBCABA /* SearchEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
 		978927B528FFD307983335FB /* Pods-RxSampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSampleTests.debug.xcconfig"; path = "Target Support Files/Pods-RxSampleTests/Pods-RxSampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9FD41C703F3B78F272422DE6 /* Pods-RxSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSample.release.xcconfig"; path = "Target Support Files/Pods-RxSample/Pods-RxSample.release.xcconfig"; sourceTree = "<group>"; };
 		A43FA3BA6B277B3D7FA17404 /* Pods_RxSampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +154,7 @@
 		6D95D45A22767EC400BBCABA /* RxSample */ = {
 			isa = PBXGroup;
 			children = (
+				6D95D4B62293CD8D00BBCABA /* UnitTest */,
 				6D95D4A522841D7900BBCABA /* Compare */,
 				6D95D4A02282794700BBCABA /* MVVM */,
 				6D95D49722818DB900BBCABA /* Wikipedia */,
@@ -253,6 +256,14 @@
 				6D95D4B022866DFF00BBCABA /* User.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		6D95D4B62293CD8D00BBCABA /* UnitTest */ = {
+			isa = PBXGroup;
+			children = (
+				6D95D4B72293CDC100BBCABA /* SearchEventViewController.swift */,
+			);
+			path = UnitTest;
 			sourceTree = "<group>";
 		};
 		6F6DEB0179B483ECA8EEACEF /* Pods */ = {
@@ -549,6 +560,7 @@
 				6D95D49D2281903300BBCABA /* WikipediaSearchAPIModel.swift in Sources */,
 				6D95D48A227686A100BBCABA /* NormalViewController.swift in Sources */,
 				6D95D48C227699C000BBCABA /* SampleViewController.swift in Sources */,
+				6D95D4B82293CDC100BBCABA /* SearchEventViewController.swift in Sources */,
 				6D95D4AE22866C7200BBCABA /* SearchUserModel.swift in Sources */,
 				6D95D4B122866DFF00BBCABA /* User.swift in Sources */,
 				6D95D4A42282966000BBCABA /* RxMvvm.swift in Sources */,
