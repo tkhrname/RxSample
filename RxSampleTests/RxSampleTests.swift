@@ -23,8 +23,7 @@ class RxSampleTests: XCTestCase {
     }
 
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // UISearchBarのテスト
         XCTContext.runActivity(named: "PresenterのdidTapSearchButtonが呼ばれること") { activity in
             print(activity)
             let subject = SearchEventViewController()
@@ -39,33 +38,36 @@ class RxSampleTests: XCTestCase {
         }
     }
     
+    // UITableViewのテスト
     func test_updateBableViewが呼ばれた時にイベントが表示される() {
         let events = ["nobunaga", "hideyoshi", "ieyasu"]
         XCTContext.runActivity(named: "eventプロパティが更新されること") { _ in
-            self.subject = SearchEventViewController()
-            self.fakePresenter = FakeSearchEventPresenter()
-            self.subject.inject(presenter: self.fakePresenter)
-            subject.updateTableView(events: events)
-            XCTAssertEqual(subject.events, events)
+            let viewcontroller = SearchEventViewController()
+            let presenter = FakeSearchEventPresenter()
+            viewcontroller.inject(presenter: presenter)
+            viewcontroller.updateTableView(events: events)
+            XCTAssertEqual(viewcontroller.events, events)
         }
         XCTContext.runActivity(named: "tableViewのセルが更新されること") { _ in
-            self.subject = SearchEventViewController()
-            self.fakePresenter = FakeSearchEventPresenter()
-            self.subject.inject(presenter: self.fakePresenter)
-            self.subject.loadViewIfNeeded()
-            XCTAssertEqual(self.subject.tableView.numberOfRows(inSection: 0), 0)
-            self.subject.updateTableView(events: events)
-            XCTAssertEqual(self.subject.tableView.numberOfRows(inSection: 0), 3)
+            let viewcontroller = SearchEventViewController()
+            let presenter = FakeSearchEventPresenter()
+            viewcontroller.inject(presenter: presenter)
+            viewcontroller.loadViewIfNeeded()
+            XCTAssertEqual(viewcontroller.tableView.numberOfRows(inSection: 0), 0)
+            viewcontroller.updateTableView(events: events)
+            XCTAssertEqual(viewcontroller.tableView.numberOfRows(inSection: 0), 3)
         }
     }
     
+    // Presenterのテスト
     func test_didTapSearchButtonのテスト() {
         XCTContext.runActivity(named: "エラーが起きた時displayErrorが呼ばれる") { _ in
-            let viewcontroller = SearchEventViewController()
+            let viewcontroller = FakeSearchEventViewController()
             let model = SearchEventModel()
             let presenter = SearchEventPresenter(viewController: viewcontroller, model: model)
             presenter.didTapSearchButton(text: "test")
             
+            XCTAssertEqual(viewcontroller.dispalayError_callCount, 1)
         }
     }
     

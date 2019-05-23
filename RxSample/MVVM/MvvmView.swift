@@ -6,7 +6,6 @@ import UIKit
  シンプルな実装だが、ViewとViewModelを十分に疎結合を実現できることがわかる
  */
 
-
 /*
  Model
  */

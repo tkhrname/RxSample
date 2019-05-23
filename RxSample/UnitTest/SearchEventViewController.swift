@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 
-protocol SearchEventViewControllerProtocol: AnyObject { // AnyObject
+protocol SearchEventViewControllerProtocol: class { // AnyObject
     func updateTableView(events: [String])
     func displayError()
 }
@@ -32,19 +32,6 @@ class SearchEventViewController: UIViewController {
     
 }
 
-class FakeSearchEventViewController: SearchEventViewControllerProtocol {
-    var updateTableView_arguments = [String]()
-    func updateTableView(events: [String]) {
-        self.updateTableView_arguments = events
-    }
-    
-    var dispalayError_callCount = 0
-    func displayError() {
-        dispalayError_callCount += 1
-    }
-    
-}
-
 extension SearchEventViewController: SearchEventViewControllerProtocol {
     func updateTableView(events: [String]) {
         self.events = events
@@ -62,6 +49,32 @@ extension SearchEventViewController: UISearchBarDelegate {
         presenter.didTapSearchButton(text: searchBar.text)
         searchBar.resignFirstResponder()
     }
+}
+
+class FakeSearchEventViewController: UIViewController, SearchEventViewControllerProtocol {
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    var updateTableView_arguments = [String]()
+    func updateTableView(events: [String]) {
+        self.updateTableView_arguments = events
+    }
+    
+    var dispalayError_callCount = 0
+    func displayError() {
+        dispalayError_callCount += 1
+    }
+    
 }
 
 protocol SearchEventPresenterProtocol {
